@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.DosFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.nio.file.attribute.PosixFileAttributes;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-public class BasicFileMain {
+public class BasicFileAttributesMain {
     public static void main(String[] args) throws IOException {
 //          BasicFileAttributes, DosFileAttributes, PosixFileAttributes
         LocalDateTime date = LocalDateTime.now().minusDays(10);
