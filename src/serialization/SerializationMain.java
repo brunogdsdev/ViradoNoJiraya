@@ -10,7 +10,11 @@ import java.nio.file.Paths;
 public class SerializationMain {
     public static void main(String[] args) {
         Aluno aluno = new Aluno(1L, "Bruno", "123");
-//        serializar(aluno);
+
+        Turma turma = new Turma("Turma java");
+
+        aluno.setTurma(turma);
+        serializar(aluno);
         deserializar();
     }
 
