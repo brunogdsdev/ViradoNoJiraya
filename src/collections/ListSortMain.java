@@ -1,9 +1,6 @@
 package collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ListSortMain {
     public static void main(String[] args) {
@@ -34,7 +31,7 @@ public class ListSortMain {
 
         lista.add(new Manga("naruto", 111L, 1));
         lista.add(new Manga("one piece",221L,11));
-        lista.add(new Manga("dragon ball", 11L, 10));
+        lista.add(new Manga("dragon ball", 511L, 10));
 
 
         for(Manga m :  lista){
@@ -47,14 +44,50 @@ public class ListSortMain {
             System.out.println(m);
         }
 
+
+        System.out.println();
+//        COMPARATOR
+
+
+//      Collections.sort(lista, new MangaByIdComparator()); //ex1:
+        lista.sort(new MangaByIdComparator()); //ex:2
+
+        for(Manga m :  lista){
+            System.out.println(m);
+        }
+
     }
 }
+
+class MangaByIdComparator implements Comparator<Manga>{
+    @Override
+    public int compare(Manga manga1, Manga manga2){
+        return manga1.getId().compareTo(manga2.getId());
+    }
+}
+
 
 
 class Manga implements Comparable<Manga>{
     private String nome;
     private Long id;
     private double preco;
+    private int quantidade;
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Manga(String nome, Long id, double preco, int quantidade) {
+        this.nome = nome;
+        this.id = id;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
 
     public int compareTo(Manga manga){
 //        !ORDENAR POR PRECO QUE É UM TIPO PRIMITIVO double
@@ -78,12 +111,12 @@ class Manga implements Comparable<Manga>{
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Manga manga = (Manga) o;
-        return id == manga.id && Double.compare(preco, manga.preco) == 0 && Objects.equals(nome, manga.nome);
+        return Objects.equals(nome, manga.nome) && Objects.equals(id, manga.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, id, preco);
+        return Objects.hash(nome, id);
     }
 
     @Override
@@ -92,6 +125,7 @@ class Manga implements Comparable<Manga>{
                 "nome='" + nome + '\'' +
                 ", id=" + id +
                 ", preco=" + preco +
+                ", quantidade=" + quantidade +
                 '}';
     }
 
@@ -103,7 +137,7 @@ class Manga implements Comparable<Manga>{
         this.nome = nome;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
