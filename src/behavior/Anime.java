@@ -1,6 +1,8 @@
 package behavior;
 
-public class Anime {
+import java.util.Comparator;
+
+public class Anime implements Comparator<Anime> {
     private String name;
     private int episodes;
 
@@ -31,5 +33,10 @@ public class Anime {
 
     public void setEpisodes(int episodes) {
         this.episodes = episodes;
+    }
+
+    @Override
+    public int compare(Anime anime, Anime t1) {
+        return anime.getName().compareTo(t1.getName());
     }
 }
