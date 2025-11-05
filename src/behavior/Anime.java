@@ -1,10 +1,27 @@
 package behavior;
 
+import streams.Category;
+
 import java.util.Comparator;
 
 public class Anime implements Comparator<Anime> {
     private String name;
     private int episodes;
+    private Category category;
+
+    public Anime(String name, int episodes, Category category) {
+        this.name = name;
+        this.episodes = episodes;
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Anime(String name, int episodes) {
         this.name = name;
@@ -16,6 +33,7 @@ public class Anime implements Comparator<Anime> {
         return "Anime{" +
                 "name='" + name + '\'' +
                 ", episodes=" + episodes +
+                ", category=" + category +
                 '}';
     }
 
