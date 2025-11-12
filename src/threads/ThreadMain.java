@@ -18,6 +18,12 @@ class ThreadExample extends Thread{
                 System.out.println();
             }
         }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

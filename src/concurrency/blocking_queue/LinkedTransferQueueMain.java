@@ -1,0 +1,30 @@
+package concurrency.blocking_queue;
+
+import java.sql.Time;
+import java.util.concurrent.LinkedTransferQueue;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TransferQueue;
+
+public class LinkedTransferQueueMain {
+
+    public static void main(String[] args) throws InterruptedException {
+        TransferQueue<Object> tq =  new LinkedTransferQueue<>();
+        System.out.println(tq.add("bruno"));
+        System.out.println(tq.offer("bruno"));
+        System.out.println(tq.offer("bruno", 10, TimeUnit.SECONDS));
+        tq.put("Dev");
+        if(tq.hasWaitingConsumer()){
+            tq.transfer("_DEV_");
+        }
+
+        System.out.println(tq.tryTransfer("__JAVA__"));
+        System.out.println(tq.tryTransfer("__JAVA__", 5, TimeUnit.SECONDS));
+        System.out.println(tq.element());
+        System.out.println(tq.peek());
+        System.out.println(tq.poll());
+        System.out.println(tq.remove());
+        System.out.println(tq.take());
+
+        System.out.println(tq.remainingCapacity());
+    }
+}
