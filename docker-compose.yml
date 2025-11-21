@@ -1,0 +1,14 @@
+version: '2.4'
+services:
+  db:
+    image: mysql
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306" #      "PORTA_CONTAINER:PORTA_DO_PC"
+    volumes:
+      - java_db:/var/lib/mysql
+
+volumes:
+  java_db:
