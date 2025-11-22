@@ -2,6 +2,8 @@ package jdbc.conn;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Log4j2
 public class ConnectionFactoryMain {
 
@@ -11,11 +13,21 @@ public class ConnectionFactoryMain {
 //        Producer p = Producer.ProducerBuilder.builder().name("Naruto").build();
 //        ProducerRepository.save(p);
 
-        log.info("TESTE INFO");
-        Producer p = Producer.builder().name("Teste").build();
+        Producer p = Producer.builder().id(1).name("UPDATED").build();
 //        ProducerService.save(p);
 //        ProducerService.delete(2);
+//        ProducerService.update(p);
 
+
+//        List<Producer> list = ProducerService.findAll();
+//        List<Producer> list = ProducerService.findByName("Tes");
+        List<Producer> list = ProducerService.findByNameAndInsertIfNotExists("BORUTO");
+//        List<Producer> list = ProducerService.findByNameAndUpdateToUppercase("Tes");
+//        List<Producer> list = ProducerService.findBy("name","Teste");
+
+        for(Producer producer : list){
+            log.info("id: {}, Nome: '{}' \n", producer.getId(), producer.getName());
+        }
 
     }
 }
