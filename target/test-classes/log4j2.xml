@@ -7,10 +7,10 @@
     </Appenders>
     <Loggers>
         <!-- avoid duplicated logs with additivity=false -->
-        <Logger name="jdbc.conn" level="info" additivity="false">
+        <Logger name="com.viradonojiraya" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
-        <Root level="info">
+        <Root level="error">
             <AppenderRef ref="LogToConsole"/>
         </Root>
     </Loggers>
